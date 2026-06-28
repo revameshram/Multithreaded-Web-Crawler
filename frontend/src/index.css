@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color: #e5eefb;
+  background: #0b1120;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.react-flow__node {
+  border-radius: 16px;
+  border: 1px solid #2c446b;
+  background: linear-gradient(180deg, #16213c 0%, #11192d 100%);
+  color: #e5eefb;
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.25);
+}
+
+.react-flow__edge-path {
+  stroke: #4b658f;
+  stroke-width: 1.5;
+}
+
+.react-flow__controls,
+.react-flow__minimap {
+  background: #11192d;
+  border: 1px solid #223252;
+}

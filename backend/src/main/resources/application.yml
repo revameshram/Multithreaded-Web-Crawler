@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: crawler-dashboard
+
+server:
+  port: 8080
+
+crawler:
+  websocket:
+    topic-prefix: /topic/crawls

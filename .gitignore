@@ -1,0 +1,7 @@
+venv_web_crawler/
+__pycache__/
+*.db
+backend/target/
+frontend/node_modules/
+frontend/dist/
+
