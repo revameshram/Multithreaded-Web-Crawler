@@ -1,4 +1,4 @@
-# Web Crawler (resume / interview project)
+# Web Crawler 
 
 This project is a prototype multi-threaded web crawler in Python.
 
