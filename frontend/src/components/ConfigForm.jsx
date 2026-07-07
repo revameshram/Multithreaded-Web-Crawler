@@ -45,8 +45,8 @@ export default function ConfigForm({ onStart, isStarting }) {
 
   return (
     <SectionCard
-      title="Configure Crawl"
-      subtitle="Launch a crawl job, return a Job ID immediately, and stream live updates into the dashboard."
+      title="Start SpiderCrawl"
+      subtitle="Enter a URL to discover links and map their topology."
     >
       <form className="space-y-5" onSubmit={handleSubmit}>
         <div className="space-y-2">

@@ -1,14 +1,8 @@
 import { useEffect, useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 import ConfigForm from './components/ConfigForm';
-import OverviewPanel from './components/OverviewPanel';
 import GraphPanel from './components/GraphPanel';
 import NodeDetailsPanel from './components/NodeDetailsPanel';
-import ThreadActivityPanel from './components/ThreadActivityPanel';
-import QueuePanel from './components/QueuePanel';
-import LogsPanel from './components/LogsPanel';
-import SummaryPanel from './components/SummaryPanel';
-import SectionCard from './components/SectionCard';
 import { createCrawlJob, fetchCrawlJob, fetchCrawlSummary } from './lib/api';
 import { connectToCrawl } from './lib/ws';
 
@@ -25,7 +19,7 @@ export default function App() {
       return undefined;
     }
 
-    let unsubscribe = () => {};
+    let unsubscribe = () => { };
 
     async function bootstrap() {
       try {
@@ -88,15 +82,23 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-shell px-4 py-6 text-textMain md:px-8">
-      <div className="mx-auto max-w-[1600px]">
-        <motion.header
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.35 }}
-          className="mb-6 rounded-[28px] border border-line bg-panel/80 px-6 py-6 shadow-panel"
-        >
-          <h1 className="text-3xl font-semibold text-textMain md:text-5xl">Interactive Multithreaded Web Crawler</h1>
-        </motion.header>
+      <div className="mx-auto max-w-[1400px]">
+        <header className="mb-6 flex flex-col sm:flex-row items-center justify-between gap-4 rounded-xl border border-red-950/70 bg-[#0d0d0d]/90 px-6 py-4 shadow-md">
+          <h1 className="text-4xl font-normal text-accent font-creepster tracking-widest">SpiderCrawl</h1>
+          {jobId ? (
+            <div className="flex items-center gap-4">
+              <span className="text-sm font-semibold text-textMuted bg-[#181818] px-3.5 py-2 rounded-lg border border-red-950/80">
+                Nodes Crawled: <span className="text-accent font-bold text-base ml-1">{job?.nodes?.length || 0}</span>
+              </span>
+              <button
+                onClick={handleReset}
+                className="rounded-lg border border-red-950/85 bg-[#1c1c1c] px-4 py-2 text-sm font-semibold text-textMain transition hover:border-accent hover:text-accent"
+              >
+                New Crawl
+              </button>
+            </div>
+          ) : null}
+        </header>
 
         {error ? (
           <div className="mb-6 rounded-2xl border border-danger/50 bg-danger/10 px-4 py-3 text-sm text-red-100">
@@ -106,49 +108,14 @@ export default function App() {
 
         {!jobId ? (
           /* Landing page / Configuration Screen */
-          <div className="mx-auto max-w-2xl">
+          <div className="mx-auto max-w-xl py-8">
             <ConfigForm onStart={handleStart} isStarting={isStarting} />
           </div>
         ) : (
           /* Live Crawl Dashboard View */
           <div className="grid gap-6 lg:grid-cols-12">
-            <OverviewPanel job={job} />
-            
-            <SectionCard
-              title="Job Control Panel"
-              subtitle="Review active streaming session metadata or reset the dashboard to create a new crawl job."
-              className="lg:col-span-5"
-              action={
-                <button
-                  onClick={handleReset}
-                  className="rounded-2xl border border-line bg-panelSoft px-4 py-2 text-sm font-semibold text-textMain transition hover:border-accent hover:text-accent"
-                >
-                  New Crawl
-                </button>
-              }
-            >
-              <div className="grid gap-4 sm:grid-cols-3">
-                <div className="rounded-2xl border border-line bg-ink/50 p-4">
-                  <div className="text-xs uppercase tracking-[0.18em] text-textMuted">Active Job</div>
-                  <div className="mt-2 text-sm font-semibold text-textMain truncate">{jobId.slice(0, 8)}...</div>
-                </div>
-                <div className="rounded-2xl border border-line bg-ink/50 p-4">
-                  <div className="text-xs uppercase tracking-[0.18em] text-textMuted">Max Depth</div>
-                  <div className="mt-2 text-sm font-semibold text-textMain">Depth {job?.maxDepth || '-'}</div>
-                </div>
-                <div className="rounded-2xl border border-line bg-ink/50 p-4">
-                  <div className="text-xs uppercase tracking-[0.18em] text-textMuted">Worker Pool</div>
-                  <div className="mt-2 text-sm font-semibold text-textMain">{job?.workerThreads || '-'} Threads</div>
-                </div>
-              </div>
-            </SectionCard>
-
             <GraphPanel nodes={job?.nodes || []} edges={job?.edges || []} onNodeClick={setSelectedNodeId} />
             <NodeDetailsPanel node={selectedNode} />
-            <ThreadActivityPanel threads={job?.threads || []} />
-            <QueuePanel queue={job?.queue} />
-            <LogsPanel logs={job?.logs || []} />
-            <SummaryPanel summary={summary} isVisible={Boolean(summary)} />
           </div>
         )}
       </div>

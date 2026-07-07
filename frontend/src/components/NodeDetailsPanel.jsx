@@ -13,19 +13,15 @@ export default function NodeDetailsPanel({ node }) {
   return (
     <SectionCard
       title="Node Details"
-      subtitle="Select a graph node to inspect crawl metadata and link relationships."
+      subtitle="Select a node to view properties."
       className="lg:col-span-4"
     >
       {node ? (
         <div>
           <DetailRow label="URL" value={node.url} />
-          <DetailRow label="Title" value={node.title || 'Untitled page'} />
+          <DetailRow label="Title" value={node.title || 'Untitled Page'} />
           <DetailRow label="HTTP Status" value={node.httpStatus} />
-          <DetailRow label="Response Time" value={node.responseTimeMillis ? `${node.responseTimeMillis} ms` : '-'} />
-          <DetailRow label="Parent URL" value={node.parentUrl} />
           <DetailRow label="Crawl Depth" value={node.depth} />
-          <DetailRow label="Outgoing Links" value={node.outgoingLinks} />
-          <DetailRow label="Incoming Links" value={node.incomingLinks} />
         </div>
       ) : (
         <div className="rounded-2xl border border-dashed border-line px-4 py-8 text-center text-sm text-textMuted">

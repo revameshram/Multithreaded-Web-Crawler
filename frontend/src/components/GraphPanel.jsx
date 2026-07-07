@@ -31,16 +31,16 @@ export default function GraphPanel({ nodes, edges, onNodeClick }) {
             zoomable
             nodeColor={(node) => {
               const status = node.data?.status;
-              if (status === null || status === undefined) return '#8fa2c7';
-              if (status >= 200 && status < 300) return '#3dd9b3';
-              if (status >= 300 && status < 400) return '#7cc8ff';
-              return '#ef4444';
+              if (status === null || status === undefined) return '#371818';
+              if (status >= 200 && status < 300) return '#ef4444';
+              if (status >= 300 && status < 400) return '#b91c1c';
+              return '#7f1d1d';
             }}
-            maskColor="rgba(11, 17, 32, 0.6)"
-            style={{ backgroundColor: '#11192d', border: '1px solid #223252' }}
+            maskColor="rgba(5, 5, 5, 0.7)"
+            style={{ backgroundColor: '#121212', border: '1px solid #371818' }}
           />
           <Controls />
-          <Background color="#20304f" gap={20} />
+          <Background color="#371818" gap={20} />
         </ReactFlow>
       </div>
     </SectionCard>

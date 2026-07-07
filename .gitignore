@@ -4,4 +4,7 @@ __pycache__/
 backend/target/
 frontend/node_modules/
 frontend/dist/
-
+project.md
+project_name.md
+guide.md
+project_file_analysis.md

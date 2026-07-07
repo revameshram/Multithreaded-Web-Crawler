@@ -4,22 +4,23 @@ export default {
   theme: {
     extend: {
       colors: {
-        ink: '#0b1120',
-        panel: '#131c31',
-        panelSoft: '#17223b',
-        accent: '#3dd9b3',
-        accentAlt: '#7cc8ff',
-        warn: '#f59e0b',
-        danger: '#ef4444',
-        textMain: '#e5eefb',
-        textMuted: '#8fa2c7',
-        line: '#223252',
+        ink: '#050505',
+        panel: '#121212',
+        panelSoft: '#1c1c1c',
+        accent: '#ef4444',
+        accentAlt: '#b91c1c',
+        warn: '#d97706',
+        danger: '#dc2626',
+        textMain: '#f3f4f6',
+        textMuted: '#9ca3af',
+        line: '#371818',
       },
       boxShadow: {
-        panel: '0 16px 40px rgba(3, 7, 18, 0.35)',
+        panel: '0 16px 40px rgba(0, 0, 0, 0.65)',
+        glow: '0 0 15px rgba(229, 9, 20, 0.4)',
       },
       backgroundImage: {
-        shell: 'radial-gradient(circle at top left, rgba(61, 217, 179, 0.14), transparent 30%), radial-gradient(circle at top right, rgba(124, 200, 255, 0.16), transparent 28%), linear-gradient(180deg, #08101f 0%, #0b1120 55%, #0c1527 100%)',
+        shell: 'radial-gradient(circle at top, rgba(229, 9, 20, 0.12), transparent 45%), linear-gradient(180deg, #050505 0%, #0a0a0a 100%)',
       },
       fontFamily: {
         sans: ['"Segoe UI"', 'Tahoma', 'Geneva', 'Verdana', 'sans-serif'],
